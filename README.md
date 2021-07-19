@@ -5,4 +5,11 @@ Criado atraves do curso Ignite da Rocketseat
 <li>Clone o codigo ou baixe</li>
 <li>De um yarn no terminal</li>
 <li>De um yarn dev para executar o codigo</li>
+<br/>
+
+Melhoras:
+<p>[ ] Ser responsivo</p>
+<p>[ ] Colocar Dark Mode</p>
+
+<a href="https://to-do-list-taupe.vercel.app/"> Deploy </a>
 
