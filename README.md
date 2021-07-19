@@ -9,7 +9,7 @@ Criado atraves do curso Ignite da Rocketseat
 
 Melhoras:
 <p>[ ] Ser responsivo</p>
-<p>[ ] Colocar Dark Mode</p>
+<p>[x] Colocar Dark Mode</p>
 
 <a href="https://to-do-list-taupe.vercel.app/"> Deploy </a>
 
