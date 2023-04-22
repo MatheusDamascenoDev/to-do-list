@@ -17,7 +17,7 @@ export function Login() {
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const {data} = await Axios.post('http://localhost:4000/users/signin', {
+      const {data} = await Axios.post('/users/signin', {
         email,
         password,
       },

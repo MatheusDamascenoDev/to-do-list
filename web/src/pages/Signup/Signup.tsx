@@ -30,7 +30,7 @@ export function Signup() {
       return;
     }
     try {
-      const { data } = await Axios.post('http://localhost:4000/users/signup', {
+      const { data } = await Axios.post('/users/signup', {
         name,
         email,
         password,
