@@ -231,7 +231,7 @@ export const ContainerTask = styled.div`
         }
     }
 
-    @media (max-width: 575px) {
+    @media (max-width: 800px) {
         section.task-list {
         background: ${props => props.theme.colors.shapes};
         border-radius: 1rem;
@@ -244,10 +244,47 @@ export const ContainerTask = styled.div`
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
+
+            .user-info {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+
+                h1 {
+                    color: ${props => props.theme.colors.text};
+                }
+
+                strong {
+                    color: ${props => props.theme.colors.blueWhite};
+                    margin-left: 0.5rem;
+                }
+
+                button {
+                    font-weight: 600;
+                    border-radius: 8px;
+                    border: 0;
+                    background: ${props => props.theme.colors.red};
+                    color: #fff;
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: row;
+                    align-items: center;
+                    padding: 0.875rem;
+                    transition: filter 0.2s;
+
+                    &:hover {
+                        filter: brightness(0.95);
+                    }
+                }
+            }
     
             h2 {
+                text-align: center;
                 color: ${props => props.theme.colors.textTitle};
                 font-size: 2.25rem;
+                margin: 1rem;
             }       
 
             .input-group {
