@@ -1,4 +1,4 @@
-import { ChangeEvent, useState, useContext, useEffect } from "react";
+import { FormEvent, useState, useContext, useEffect } from "react";
 import { ContainerLogin } from "./style";
 import { useNavigate, Link } from 'react-router-dom'
 import { toast } from "react-toastify";
@@ -14,7 +14,7 @@ export function Login() {
 
   const navigate = useNavigate();
 
-  const submitHandler = async (e: ChangeEvent<HTMLInputElement>) => {
+  const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const {data} = await Axios.post('http://localhost:4000/users/signin', {

@@ -9,11 +9,16 @@ interface Task {
   isComplete: boolean;
 }
 
+interface StateProps {
+  state: any,
+  dispatch: any
+}
+
 export function TaskList() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTaskTitle, setNewTaskTitle] = useState('');
 
-  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { state, dispatch: ctxDispatch } = useContext<StateProps>(Store);
   const { userInfo } = state;
 
   const signoutHandler = () => {

@@ -3,8 +3,13 @@ import { useNavigate, Link } from 'react-router-dom'
 import { useState, useContext, useEffect } from 'react'
 import Axios from 'axios';
 import { toast } from 'react-toastify';
-import { ChangeEvent } from 'react';
+import { FormEvent } from 'react';
 import { Store } from "../../Store";
+
+interface StateProps {
+  state: any,
+  dispatch: any
+}
 
 export function Signup() {
   const [name, setName] = useState('');
@@ -13,12 +18,12 @@ export function Signup() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [tasks, setTasks] = useState('')
 
-  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { state, dispatch: ctxDispatch } = useContext<StateProps>(Store);
   const { userInfo } = state;
 
   const navigate = useNavigate();
 
-  const submitHandler = async (e: ChangeEvent<HTMLInputElement>) => {
+  const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       toast.error('Passwords do not match');
@@ -35,7 +40,7 @@ export function Signup() {
       localStorage.setItem('userInfo', JSON.stringify(data));
       console.log(data)
       navigate('/home')
-    } catch (err) {
+    } catch (err: any) {
       toast.error((err));
     }
   };
