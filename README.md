@@ -23,7 +23,7 @@ Aplicação WEB:
 - [x] Botão de DarkMode
 - [x] Responsivo
 - [x] Sistema de Login
-- [ ] Salvar tasks no Banco de Dados
+- [x] Salvar tasks no Banco de Dados
 ---
 
 ## Tecnologias
