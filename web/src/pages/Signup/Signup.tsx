@@ -36,8 +36,7 @@ export function Signup() {
       });
       ctxDispatch({ type: 'USER_SIGNIN', payload: data });
       localStorage.setItem('userInfo', JSON.stringify(data));
-      console.log(data)
-      navigate('/home')
+      navigate('/')
     } catch (err: any) {
       toast.error((err));
     }
@@ -45,7 +44,7 @@ export function Signup() {
 
   useEffect(() => {
     if (userInfo) {
-      navigate('/home');
+      navigate('/');
     }
   }, [navigate, userInfo]);
 
