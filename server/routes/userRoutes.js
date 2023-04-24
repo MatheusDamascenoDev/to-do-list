@@ -126,4 +126,82 @@ userRouter.post(
   }),
 );
 
+userRouter.post(
+  '/:id/newtask',
+  expressAsyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+    if (user) {
+      const task = {
+        title: req.body.title,
+        isComplete: Boolean(req.body.isComplete),
+      };
+      user.tasks.push(task)
+      await user.save().then((result) => {
+        res.send(result);
+      });
+    } else (err) => {
+      res.status(500).send('Ocorreu um erro ao adicionar item ao array: ' + err);
+    }
+  }),
+);
+
+userRouter.put(
+  '/:id/newtask/:taskId',
+  expressAsyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+    if (user) {
+      user.set({tasks: req.body})
+      await user.save().then((result) => {
+        res.send(result);
+      });
+    } else (err) => {
+      res.status(500).send({message: err.response.data});
+    }
+  }),
+);
+
+userRouter.delete(
+  '/:id/newtask/:taskId',
+  expressAsyncHandler(async (req, res) => {
+    try {
+      const user = await User.findById(req.params.id);
+    if (user) {
+      user.tasks.pull({_id: req.params.taskId});
+      await user.save().then((result) => {
+        res.send(result);
+      });
+    } else (err) => {
+      res.status(500).send('Ocorreu um erro ao apagar a task: ' + err);
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Erro ao remover objeto do array');
+  }
+    
+  }),
+);
+
+// userRouter.put(
+//   '/:id/task/:taskId',
+//   expressAsyncHandler(async (req, res) => {
+//     try {
+//       const user = await User.findById(req.params.id);
+      
+//       console.log(task)
+//     if (task) {
+      
+//       await user.save()
+//       res.status(200).send('Task apagada')
+//     } else (err) => {
+//       res.status(500).send('Ocorreu um erro ao apagar a task: ' + err);
+//     }
+//     } catch (error) {
+//       console.error(error);
+//       res.status(500).send('Erro ao completar a taks do array: ' + err.response.data);
+//     }
+    
+//   }),
+// );
+
+
 export default userRouter;

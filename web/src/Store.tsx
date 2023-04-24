@@ -7,6 +7,7 @@ const initialState = {
     ? JSON.parse(localStorage.getItem('userInfo') || '{}')
     : null,
   };
+  
 function reducer(state: any, action: any) {
   switch (action.type) {
     case 'USER_SIGNIN':

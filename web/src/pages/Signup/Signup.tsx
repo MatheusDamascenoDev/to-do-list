@@ -16,7 +16,6 @@ export function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [tasks, setTasks] = useState('')
 
   const { state, dispatch: ctxDispatch } = useContext<StateProps>(Store);
   const { userInfo } = state;
@@ -34,7 +33,6 @@ export function Signup() {
         name,
         email,
         password,
-        tasks,
       });
       ctxDispatch({ type: 'USER_SIGNIN', payload: data });
       localStorage.setItem('userInfo', JSON.stringify(data));

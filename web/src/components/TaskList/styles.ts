@@ -383,6 +383,7 @@ export const ContainerTask = styled.div`
                     align-items: center;
                     border-bottom: 1px solid #EBEBEB;
                     padding: 1rem 0;
+                    
 
                     div {
                         display: flex;

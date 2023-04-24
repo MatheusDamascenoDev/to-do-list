@@ -6,13 +6,14 @@ import Axios from "axios";
 import { Store } from "../../Store";
 
 export function Login() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { userInfo } = state;
 
-  const navigate = useNavigate();
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,11 +21,10 @@ export function Login() {
       const {data} = await Axios.post('/users/signin', {
         email,
         password,
-      },
-      );
+      });
       ctxDispatch({ type: 'USER_SIGNIN', payload: data });
       localStorage.setItem('userInfo', JSON.stringify(data));
-      navigate('/home');
+      navigate(`/home/${userInfo._id}`);
     } catch (error: any) {
       console.log(error.response.data)
       toast.error((error.response.data));
@@ -33,7 +33,7 @@ export function Login() {
 
   useEffect(() => {
     if (userInfo) {
-      navigate('/home');
+      navigate(`/home/${userInfo._id}`);
     }
   }, [navigate, userInfo]);
 
