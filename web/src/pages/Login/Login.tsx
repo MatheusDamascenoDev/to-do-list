@@ -50,7 +50,7 @@ export function Login() {
               required
             />
             <input 
-              type="current-password" 
+              type="password" 
               placeholder="Digite sua senha"
               onChange={(e) => setPassword(e.target.value)}
               required
