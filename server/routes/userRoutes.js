@@ -128,6 +128,7 @@ userRouter.post(
 
 userRouter.post(
   '/:id/newtask',
+  isAuth,
   expressAsyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id);
     if (user) {
@@ -147,6 +148,7 @@ userRouter.post(
 
 userRouter.put(
   '/:id/newtask/:taskId',
+  isAuth,
   expressAsyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id);
     if (user) {
@@ -162,6 +164,7 @@ userRouter.put(
 
 userRouter.delete(
   '/:id/newtask/:taskId',
+  isAuth,
   expressAsyncHandler(async (req, res) => {
     try {
       const user = await User.findById(req.params.id);
@@ -180,28 +183,6 @@ userRouter.delete(
     
   }),
 );
-
-// userRouter.put(
-//   '/:id/task/:taskId',
-//   expressAsyncHandler(async (req, res) => {
-//     try {
-//       const user = await User.findById(req.params.id);
-      
-//       console.log(task)
-//     if (task) {
-      
-//       await user.save()
-//       res.status(200).send('Task apagada')
-//     } else (err) => {
-//       res.status(500).send('Ocorreu um erro ao apagar a task: ' + err);
-//     }
-//     } catch (error) {
-//       console.error(error);
-//       res.status(500).send('Erro ao completar a taks do array: ' + err.response.data);
-//     }
-    
-//   }),
-// );
 
 
 export default userRouter;

@@ -79,7 +79,11 @@ export function TaskList() {
       isComplete: !task.isComplete,
       _id: taskId
     }: task)
-    const {data} = await Axios.put(`/users/${userId}/newtask/${taskId}`, toogleTask);
+    const {data} = await Axios.put(`/users/${userId}/newtask/${taskId}`, toogleTask, {
+      headers: { 
+        Authorization: `Bearer ${userInfo.token}`,
+      }
+    });
     setNewTask(data)
     setTasks(toogleTask)
   };

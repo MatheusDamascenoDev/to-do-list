@@ -4,6 +4,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import { toast } from "react-toastify";
 import Axios from "axios";
 import { Store } from "../../Store";
+import getError from "../../utils";
 
 export function Login() {
   const navigate = useNavigate();
@@ -25,9 +26,10 @@ export function Login() {
       ctxDispatch({ type: 'USER_SIGNIN', payload: data });
       localStorage.setItem('userInfo', JSON.stringify(data));
       navigate(`/home/${userInfo._id}`);
-    } catch (error: any) {
-      console.log(error.response.data)
-      toast.error((error.response.data));
+    } catch (err: any) {
+      console.log((getError(err)))
+      toast.error(getError(err));
+      window.alert(getError(err));
     }
   };
 

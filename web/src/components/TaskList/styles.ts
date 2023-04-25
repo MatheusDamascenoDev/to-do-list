@@ -112,7 +112,7 @@ export const ContainerTask = styled.div`
             }
 
             span {
-                color: ${props => props.theme.colors.text};
+                color: #fff;
                 padding: .2rem .8rem;
                 background: ${props => props.theme.colors.green};
                 border-radius: 999px;
