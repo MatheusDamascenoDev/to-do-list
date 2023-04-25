@@ -25,12 +25,10 @@ export function Login() {
       });
       ctxDispatch({ type: 'USER_SIGNIN', payload: data });
       localStorage.setItem('userInfo', JSON.stringify(data));
-      navigate(`/home/${userInfo._id}`);
     } catch (err: any) {
-      console.log((getError(err)))
       toast.error(getError(err));
-      window.alert(getError(err));
     }
+    navigate(`/home/${userInfo._id}`);
   };
 
   useEffect(() => {

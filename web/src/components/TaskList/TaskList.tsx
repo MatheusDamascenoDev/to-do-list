@@ -67,6 +67,7 @@ export function TaskList() {
       );
       setNewTask(data)
       setNewTaskTitle('');
+      toast.success('Task adicionada com sucesso!')
     } catch (error: any) {
       console.log(error.response.data)
       toast.error((error.response.data));
@@ -94,6 +95,7 @@ export function TaskList() {
         headers: { Authorization: `Bearer ${userInfo.token}` }
       });
       setDeleteTask(data)
+      toast.success('Task deletada com sucesso!')
     } catch (error: any) {
       console.log(error.response.data)
       toast.error((error.response.data));
